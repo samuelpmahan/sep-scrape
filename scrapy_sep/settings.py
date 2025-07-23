@@ -9,6 +9,7 @@ NEWSPIDER_MODULE = "scrapy_sep.spiders"
 
 ADDONS = {}
 
+LOG_LEVEL = "INFO"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = "scrapy_sep (+MY LEARNING PROJECT)"
@@ -18,7 +19,7 @@ ROBOTSTXT_OBEY = True
 
 # Concurrency and throttling settings
 #CONCURRENT_REQUESTS = 16
-CONCURRENT_REQUESTS_PER_DOMAIN = 1
+CONCURRENT_REQUESTS_PER_DOMAIN = 5
 DOWNLOAD_DELAY = 1
 RANDOMIZE_DOWNLOAD_DELAY = True
 
@@ -32,6 +33,21 @@ HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 # Set settings whose default value is deprecated to a future-proof value
 FEED_EXPORT_ENCODING = "utf-8"
 
+# Configure item pipelines
+# See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+ITEM_PIPELINES = {
+    "scrapy_sep.pipelines.ParsingPipeline": 200,
+    "scrapy_sep.pipelines.LatexProcessingPipeline": 300,
+    "scrapy_sep.pipelines.SepStoragePipeline": 400,
+}
+
+EXTENSIONS = {
+   'scrapy_sep.extensions.ProgressMonitor': 500,
+}
+
+# Optional: You can configure the total articles and interval here
+TOTAL_ARTICLES = 1800
+PROGRESS_INTERVAL = 30.0 # seconds
 
 # --- Enable the Pipeline ---
 # ITEM_PIPELINES is defined below
@@ -65,12 +81,6 @@ FEED_EXPORT_ENCODING = "utf-8"
 #EXTENSIONS = {
 #    "scrapy.extensions.telnet.TelnetConsole": None,
 #}
-
-# Configure item pipelines
-# See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-    "scrapy_sep.pipelines.SepStoragePipeline": 300,
-}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

@@ -1,15 +1,16 @@
 import scrapy
 
 class SepArticleItem(scrapy.Item):
-    # The structured data container for a single article.
-    
-    # Metadata
+    # Fields that will be saved to the JSON file.
     url = scrapy.Field()
     title = scrapy.Field()
-    
-    # Content Payloads
     preamble_text = scrapy.Field()
-    body_text = scrapy.Field()
-    
-    # Graph Structure
     related_entries = scrapy.Field()
+    text_with_placeholders = scrapy.Field()
+    math_expressions = scrapy.Field()
+
+    # --- Temporary fields used during processing ---
+    # The spider passes the response object.
+    response = scrapy.Field() 
+    # This holds the main text before LaTeX processing.
+    body_text = scrapy.Field()
