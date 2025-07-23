@@ -5,3 +5,5 @@ __pycache__
 *.pyc
 sep_html_cache
 processed_articles
+engineered_features*
+.DS_Store

@@ -4,3 +4,10 @@ networkx
 scipy
 pylatexenc
 scrapy
+scikit-learn
+networkx
+python-louvain
+hdbscan
+numpy
+spacy
+tqdm
