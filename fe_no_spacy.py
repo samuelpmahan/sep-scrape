@@ -101,7 +101,7 @@ def build_citation_communities(articles: list) -> list:
     logging.info(f"Detected {len(communities)} citation-based communities.")
     return list(communities.values())
 
-def find_bridge_articles(community_urls: set, all_article_keywords: dict, core_concepts: set, similarity_threshold: float = 0.05) -> list:
+def find_bridge_articles(community_urls: set, all_article_keywords: dict, core_concepts: set, similarity_threshold: float = 0.1) -> list:
     """Finds articles that are not in the community but are thematically similar."""
     bridge_articles = []
     for url, keywords in all_article_keywords.items():
