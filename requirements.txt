@@ -1,0 +1,6 @@
+pandas
+google.generativeai
+networkx
+scipy
+pylatexenc
+scrapy

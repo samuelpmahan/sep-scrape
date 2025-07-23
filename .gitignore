@@ -1,0 +1,6 @@
+.venv
+.scrapy
+scraped*
+__pycache__
+*.pyc
+sep_html_cache
